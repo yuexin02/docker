@@ -137,5 +137,5 @@ RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool && \
 
  WORKDIR /usr/local/apache/htdocs
 
- CMD ["/bin/bash"]
+ #CMD ["/bin/bash"]
 
