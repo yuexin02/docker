@@ -1,6 +1,6 @@
 FROM centos:7.5.1804
 
-RUN yum update 
+#RUN yum update 
 
 RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool && \
      #安装apr
