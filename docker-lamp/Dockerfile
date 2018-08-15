@@ -44,9 +44,9 @@ RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool && \
          --enable-mods-shared=most \
          --enable-mpms-shared=all \
          --with-mpm=event && \
-     make && make install && \
-     \
-     sed -i 's/Require all denied/Require all granted/' /etc/httpd/httpd.conf && \
+     make && make install 
+     
+RUN  sed -i 's/Require all denied/Require all granted/' /etc/httpd/httpd.conf && \
      sed -i '/ServerName www.example.com:80/a\ServerName localhost:80' /etc/httpd/httpd.conf  && \
      sed -i '$a\PidFile "/var/run/httpd.pid"' /etc/httpd/httpd.conf && \
      /usr/local/apache/bin/apachectl start  && \
@@ -74,10 +74,10 @@ RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool && \
      sed -i 's|PATH=$PATH:$HOME/bin:/usr/local/apache/bin|&:/usr/local/mysql/bin:/usr/local/mysql/bin|' /root/.bash_profile && \
      source /root/.bash_profile && \
      /etc/init.d/mysqld start  && \
-     mysqladmin -u root password root,,  && \
-     \
+     mysqladmin -u root password root,, 
+     
      #编译安装php
-     yum install -y \
+ RUN yum install -y \
          epel-release \
          php-mcrypt  \
          libmcrypt \
@@ -115,8 +115,9 @@ RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool && \
          --enable-maintainer-zts \
          --disable-fileinfo && \
      make && make install && \
-     cp php.ini-production /etc/php.ini && \
-     {\
+     cp php.ini-production /etc/php.ini
+     
+RUN  {\
          echo "AddType application/x-httpd-php  .php"; \
          echo "AddType application/x-httpd-php-source  .phps"; \
      } >> /etc/httpd/httpd.conf && \
