@@ -2,9 +2,9 @@ FROM centos:7.5.1804
 
 RUN yum update 
 
-RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool \ &&
-     #安装apr\
-     cd /usr/local/src/ \ && 
+RUN yum install -y wget vim unzip gcc gcc-c++ autoconf libtool \
+     #安装apr
+     && cd /usr/local/src/ \ && 
      wget http://oss.aliyuncs.com/aliyunecs/onekey/apache/apr-1.5.0.tar.gz \ &&
      tar zxvf apr-1.5.0.tar.gz \ &&
      cd apr-1.5.0 \ &&
